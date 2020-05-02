@@ -132,6 +132,21 @@
 <!--        </dependency>-->
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.projectKey>passakornC_demo1</sonar.projectKey>
+                <sonar.organization>passakornchoosuk</sonar.organization>
+                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+                <sonar.login>6f0eea4edfbf2b7980b2409d5a3db40a597719c0</sonar.login>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
