@@ -17,6 +17,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +28,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class DemoApplicationTests {
     @Test
     public void test() {
-        log.info(LocalDateTime.now().atZone(ZoneId.of("Asia/Bangkok")).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+        Map<String, String> map = new HashMap<>();
+        map.put("key1", "value 1");
+        map.put("key2", "value 2");
+
+        log.info(map.toString());
     }
 }
