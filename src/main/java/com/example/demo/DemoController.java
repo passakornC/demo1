@@ -24,4 +24,9 @@ public class DemoController {
     public ResponseEntity<?> demo3() {
         return ResponseEntity.ok(this.demoService.sayDemo());
     }
+
+    @GetMapping(path = "/demo4")
+    public ResponseEntity<?> demo4() {
+        return ResponseEntity.ok(this.demoService.sayDemo());
+    }
 }
