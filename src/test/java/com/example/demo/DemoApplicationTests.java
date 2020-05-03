@@ -3,6 +3,8 @@ package com.example.demo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +28,21 @@ import static org.junit.jupiter.api.Assertions.*;
 //@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class DemoApplicationTests {
+    @Spy
+    private DemoService demoService;
+
     @Test
     public void test() {
-        Map<String, String> map = new HashMap<>();
-        map.put("key1", "value 1");
-        map.put("key2", "value 2");
+        assertEquals("DEMO", this.demoService.sayDemo());
+    }
 
-        log.info(map.toString());
+    @Test
+    public void test2() {
+        assertEquals("B", this.demoService.chooseSomething(5));
+    }
+
+    @Test
+    public void test3() {
+        assertEquals("A", this.demoService.chooseSomething(11));
     }
 }

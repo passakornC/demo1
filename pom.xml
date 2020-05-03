@@ -139,10 +139,20 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <sonar.projectKey>passakornC_demo1</sonar.projectKey>
-                <sonar.organization>passakornchoosuk</sonar.organization>
-                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-                <sonar.login>6f0eea4edfbf2b7980b2409d5a3db40a597719c0</sonar.login>
+
+                    <sonar.projectKey>passakornC_demo1</sonar.projectKey>
+                    <sonar.organization>passakornchoosuk</sonar.organization>
+                    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+                    <sonar.login>a396e3d25052d081110ce2b4216c3791845edecb</sonar.login>
+
+                <sonar.language>java</sonar.language>
+                <sonar.sources>src/main</sonar.sources>
+                <sonar.tests>src/test</sonar.tests>
+                <sonar.java.binaries>target/classes</sonar.java.binaries>
+                <sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
+                <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+<!--                <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>-->
+                <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
             </properties>
         </profile>
     </profiles>
@@ -163,6 +173,35 @@
                         <id>post-integration-test</id>
                         <goals>
                             <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.4.0.905</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.1</version>
+                <configuration>
+                    <destFile>${sonar.coverage.jacoco.xmlReportPaths}</destFile>
+                    <append>true</append>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>

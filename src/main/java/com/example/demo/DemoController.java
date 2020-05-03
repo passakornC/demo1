@@ -11,22 +11,22 @@ public class DemoController {
     private DemoService demoService;
 
     @GetMapping(path = "/demo")
-    public ResponseEntity<?> demo() {
+    public ResponseEntity<String> demo() {
         return ResponseEntity.ok(this.demoService.sayDemo());
     }
 
     @GetMapping(path = "/demo2")
-    public ResponseEntity<?> demo2() {
+    public ResponseEntity<String> demo2() {
         return ResponseEntity.ok(this.demoService.sayDemo());
     }
 
     @GetMapping(path = "/demo3")
-    public ResponseEntity<?> demo3() {
+    public ResponseEntity<String> demo3() {
         return ResponseEntity.ok(this.demoService.sayDemo());
     }
 
     @GetMapping(path = "/demo4")
-    public ResponseEntity<?> demo4() {
+    public ResponseEntity<String> demo4() {
         return ResponseEntity.ok(this.demoService.sayDemo());
     }
 }
